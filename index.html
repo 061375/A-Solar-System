@@ -3,14 +3,115 @@
 		<style>
 			body {
 				background-color: #000;
+				max-width: 100vw;
+    			overflow: hidden;
+    			font-family: Arial;
+			}
+			#menu-container {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				background: #2f2f2f;
+			    width: 395px;
+			    height: 100vh;
+			    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+			    padding: 5px;
+    			box-sizing: border-box;
+			}
+			#menu-container.close {
+				right: -395px;
+			}
+			#navtab {
+				position: relative;
+				background: #525252;
+			    left: -33px;
+			    width: 535px;
+			    height: 30px;
+			    border-top-left-radius: 10px;
+    			border-bottom-left-radius: 10px;
+    			box-shadow: 1px 1px 2px #000;
+			}
+			#openclose {
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 14px 24.2px 14px 0;
+				border-color: transparent #ffffff transparent transparent;
+				margin: 5px 0px;
+				cursor: pointer;
+			}
+			#menu {
+				text-transform: uppercase;;
+			}
+			#menu table {
+				margin-top: 10px;
+    			width: 100%;
+			}
+			#menu td {
+				color: #fff;
+			}
+			#menu button {
+				width: 100%;
+			    margin-top: 20px;
+			    padding: 10px;
+			    font-size: 20px;
+			    text-transform: unset;
+			    border-radius: 10px;
 			}
 		</style>
 	</head>
 	<body>
+		<div id="menu-container">
+			<div id="navtab">
+				<div id="openclose"></div>
+			</div>
+			<div id="menu">
+				<table>
+					<tr>
+						<td>sun size</td>
+						<td>
+							<input type="text" id="SOLARSIZE">
+						</td>
+					</tr>
+					<tr>
+						<td>sun mass</td>
+						<td>
+							<input type="text" id="SOLARMASS">
+						</td>
+					</tr>
+					<tr>
+						<td>planet mass</td>
+						<td>
+							<input type="text" id="PLANETMASS">
+						</td>
+					</tr>
+					<tr>
+						<td>number of planets</td>
+						<td>
+							<input type="text" id="NUMBEROFPLANETS">
+						</td>
+					</tr>
+					<tr>
+						<td>start speed</td>
+						<td>
+							<input type="text" id="STARTSPEED">
+						</td>
+					</tr>
+					<tr>
+						<td>MAX start speed</td>
+						<td>
+							<input type="text" id="MAXSTARTSPEED">
+						</td>
+					</tr>
+				</table>
+				<button id="updateconfig">Update</button>
+			</div>
+		</div>
 		<div id="container"></div>
 		<script src="gravity.js"></script>
 		<script src="gobject.js"></script>
 		<script src="vector.js"></script>
+		<script src="protohacks.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>

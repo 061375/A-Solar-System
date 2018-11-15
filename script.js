@@ -1,34 +1,50 @@
 // initialize constants
 const 	G = 6.674e-11,
 		WW = window.innerWidth,
-		HH = window.innerHeight;
-		hW = (WW/2);
+		HH = window.innerHeight,
+		hW = (WW/2),
 		hH = (HH/2);
-		SOLARSIZE = 20;
-		SOLARMASS = (500 * 12e+9);
-		PLANETMASS = 12e+7;
-		NUMBEROFPLANETS = 150; // n - 1 ( the sun ) 
-		STARTSPEED = 0.1;
-		STARTCHAOS = (STARTSPEED + Math.random() * 0.03);
+var 	SOLARSIZE = 20,
+		SOLARMASS = (500 * 12e+9),
+		PLANETMASS = 12e+7,
+		NUMBEROFPLANETS = 150, // n - 1 ( the sun ) 
+		STARTSPEED = 0.1,
+		MAXSTARTSPEED = 0.03,
+		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
 
 // initialize variables
-var canvas, ctx,  _objects = [], isrunnning = true, W, H, hW, hH;
+var canvas, ctx,  _objects = [], isrunnning = true, W, H;
 
-window.onload = function(){ init(); }
+document.getElementById("navtab").addEventListener('click', toggleMenu, false);
+document.getElementById("updateconfig").addEventListener('click', run, false);
+window.onload = function(){ 
+	buildCanvas(function(){
+		document.getElementById("SOLARSIZE").value = SOLARSIZE;
+		document.getElementById("SOLARMASS").value = SOLARMASS;
+		document.getElementById("PLANETMASS").value = PLANETMASS;
+		document.getElementById("NUMBEROFPLANETS").value = NUMBEROFPLANETS;
+		document.getElementById("STARTSPEED").value = STARTSPEED;
+		document.getElementById("MAXSTARTSPEED").value = MAXSTARTSPEED;
+		run(); 
+	});
+}
 
 /** 
  * run everything
  * @returns {Void}
  * */
-function init() {
-
-	W = document.getElementById('container').clientWidth;
-	H = document.getElementById('container').clientHeight;
+function run() {
 	
+	_objects = [];
 
-	// create the canvas
-	canvas = document.createElement('canvas');
-	ctx = canvas.getContext('2d');
+	// get vars from control form
+	SOLARSIZE = document.getElementById("SOLARSIZE").value;
+	SOLARMASS = document.getElementById("SOLARMASS").value;
+	PLANETMASS = document.getElementById("PLANETMASS").value;
+	NUMBEROFPLANETS = document.getElementById("NUMBEROFPLANETS").value;
+	STARTSPEED = document.getElementById("STARTSPEED").value;
+	MAXSTARTSPEED = document.getElementById("MAXSTARTSPEED").value;
+	STARTCHAOS = (parseFloat(STARTSPEED) + Math.random() * parseFloat(MAXSTARTSPEED));
 
 	// init local vars
 	let size = SOLARSIZE;
@@ -36,13 +52,14 @@ function init() {
 	let x,y;
 	let speed = 0;
 	let start = {x:0,y:0};
-	
+
 	// loop
 	for(let i = 0; i<NUMBEROFPLANETS; i++) {
+
 		// if not the first loop 
 		if(i > 0) {
 			
-			start = {x:STARTCHAOS,y:0};
+			start = {x:STARTCHAOS, y:0};
 			/*
 			Plan to start in random positions then give each planet a kick in the right direction
 
@@ -75,13 +92,36 @@ function init() {
 			color:'#fff'
 		});
 	}
-	// add the canvas
-	document.getElementById('container').appendChild(canvas);
+	
 
 	// handle a resize
 	resizeHandler();
 
 	render();
+}
+function toggleMenu(e) {
+	if(document.getElementById("menu-container").hasClass("close")) {
+		document.getElementById("menu-container").removeClass("close");
+	}else{
+		document.getElementById("menu-container").addClass("close");
+	}
+}
+/** 
+ * @param {Function}
+ * */
+function buildCanvas(callback) {
+
+	W = document.getElementById('container').clientWidth;
+	H = document.getElementById('container').clientHeight;
+	// create the canvas
+	canvas = document.createElement('canvas');
+	canvas.setAttribute("id","canvas");
+	// add the canvas
+	document.getElementById('container').appendChild(canvas);
+
+	ctx = canvas.getContext('2d');
+
+	callback();
 }
 /** 
  * clear the canvas
@@ -174,16 +214,16 @@ function trig(x,y,r,d,array) {
     }
 }
 /**
-   * @param {Number}
-   * @param {Number}
-   * @param {Number}
-   * @param {Number}
-   * @param {Boolean}
-   *
-   * @returns {Number}
-   * */
-  function point_direction(x1,y1,x2,y2,radians,direction)
-  {
+* @param {Number}
+* @param {Number}
+* @param {Number}
+* @param {Number}
+* @param {Boolean}
+*
+* @returns {Number}
+* */
+function point_direction(x1,y1,x2,y2,radians,direction)
+{
     if (undefined === direction) direction = 0;
     if (undefined === radians) radians = false;
     
@@ -198,4 +238,4 @@ function trig(x,y,r,d,array) {
     if(radians) return angleInRadians;
   
     return angleInDegrees;
-  }
+}
