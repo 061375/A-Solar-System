@@ -78,8 +78,18 @@ function run() {
 			y = Math.random() * (HH / 4);
 		}else{
 			// first loop init the SUN
-			x = hW ;
-			y = hH ;
+			x = hW;
+			y = hH;
+			// plaing with multipl planets ( @TODO )
+			/*
+			if(i==0) {
+				x = hW + 500;
+				start = {x:0, y:0.032};
+			}else{
+				x = hW - 300;
+				start = {x:0,y:-0.032};
+			}
+			*/
 		}
 		// instantiate new gravity object
 		_objects[i] = new gObject({
