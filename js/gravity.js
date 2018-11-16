@@ -2,6 +2,10 @@ var Gravity = (function(){
 
 	var haserror = false;
 
+	var boolcollision = false;
+
+	var boolaccretion = false;
+
 	var calc = function(a,b) {
 		
 		a = a.get();
@@ -75,8 +79,8 @@ var Gravity = (function(){
 						if(objects[y].get().alive) {
 							if(x != y) {
 								calc(objects[x],objects[y]);
-								//if(x==0)
-								checkCollision(objects[x],objects[y]);
+								if(boolcollision)
+									checkCollision(objects[x],objects[y]);
 							}
 						}
 					}
@@ -93,21 +97,35 @@ var Gravity = (function(){
 		let m = (a.get().mass + b.get().mass);
 		if(d <= (s)) {
 			if(a.get().mass < b.get().mass) {
-				//b.raisemass(m);
-				//b.raisesize(s);
+				if(boolaccretion){
+					b.raisemass(m);
+					b.raisesize(s);
+				}
 				a.collision();
 			}
 			if(b.get().mass < a.get().mass){
-				//a.raisemass(m);
-				//a.raisesize(s);
+				if(boolaccretion) {
+					a.raisemass(m);
+					a.raisesize(s);
+				}
 				b.collision();
 			}
 		}
 	}
+	//
+	var toggleCollision = function(b) {
+		boolcollision = b;
+	}
+	//
+	var toggleAccretion = function(b) {
+		boolaccretion = b;
+	}
 
 	return {
 		calc: calc,
-		calcAll: calcAll
+		calcAll: calcAll,
+		toggleCollision:toggleCollision,
+		toggleAccretion:toggleAccretion
 	}
 
 })();

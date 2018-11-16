@@ -8,6 +8,14 @@ function toggleMenu() {
 		document.getElementById("menu-container").addClass("close");
 	}
 }
+function toggleCollision() {
+    BOOLCOLLISION = document.getElementById("BOOLCOLLISION").checked;
+    Gravity.toggleCollision(BOOLCOLLISION);
+}
+function toggleAccretion() {
+    BOOLACCRETION = document.getElementById("BOOLACCRETION").checked;
+    Gravity.toggleAccretion(BOOLACCRETION);
+}
 /** 
  * 
  * @function distance

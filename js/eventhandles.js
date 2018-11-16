@@ -10,3 +10,7 @@ document.getElementById("MAXPLANETSIZE").addEventListener('keyup', checkPlanetMi
 
 document.getElementById("MINDISSTART").addEventListener('keyup', checkPlanetDis, false);
 document.getElementById("MAXDISSTART").addEventListener('keyup', checkPlanetDis, false);
+
+document.getElementById("BOOLCOLLISION").addEventListener('change', toggleCollision, false);
+
+document.getElementById("BOOLACCRETION").addEventListener('change', toggleAccretion, false);

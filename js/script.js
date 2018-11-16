@@ -16,6 +16,8 @@ var 	SOLARSIZE = 20,
 		MINPLANETSIZE = 1;
 		MAXPLANETSIZE = 5;
 		STARTSTATIC = false;
+		BOOLCOLLISION = false;
+		BOOLACCRETION = false;
 
 // initialize variables
 var canvas, ctx,  _objects = [], isrunnning = true, W, H;
@@ -34,6 +36,8 @@ window.onload = function(){
 		document.getElementById("MINPLANETSIZE").value = MINPLANETSIZE;
 		document.getElementById("MAXPLANETSIZE").value = MAXPLANETSIZE;
 		document.getElementById("STARTSTATIC").checked = STARTSTATIC;
+		document.getElementById("BOOLCOLLISION").checked = BOOLCOLLISION;
+		document.getElementById("BOOLACCRETION").checked = BOOLACCRETION;
 
 		run(); 
 	});
@@ -67,6 +71,10 @@ function run() {
 
 	STARTSTATIC = document.getElementById("STARTSTATIC").checked;
 	STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
+
+	BOOLCOLLISION = document.getElementById("BOOLCOLLISION").checked;
+	
+	BOOLACCRETION = document.getElementById("BOOLACCRETION").checked;
 
 	// init local vars
 	let size = SOLARSIZE;
