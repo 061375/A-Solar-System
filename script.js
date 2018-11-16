@@ -13,6 +13,8 @@ var 	SOLARSIZE = 20,
 		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
 		MINDISSTART = 50;
 		MAXDISSTART = 400;
+		MINPLANETSIZE = 1;
+		MAXPLANETSIZE = 5;
 		STARTSTATIC = false;
 
 // initialize variables
@@ -30,6 +32,8 @@ window.onload = function(){
 		document.getElementById("MAXSTARTSPEED").value = MAXSTARTSPEED;
 		document.getElementById("MINDISSTART").value = MINDISSTART;
 		document.getElementById("MAXDISSTART").value = MAXDISSTART;
+		document.getElementById("MINPLANETSIZE").value = MINPLANETSIZE;
+		document.getElementById("MAXPLANETSIZE").value = MAXPLANETSIZE;
 		run(); 
 	});
 }
@@ -51,6 +55,8 @@ function run() {
 	MAXSTARTSPEED = document.getElementById("MAXSTARTSPEED").value;
 	MINDISSTART = parseInt(document.getElementById("MINDISSTART").value);
 	MAXDISSTART = parseInt(document.getElementById("MAXDISSTART").value);
+	MINPLANETSIZE = parseInt(document.getElementById("MINPLANETSIZE").value);
+	MAXPLANETSIZE = parseInt(document.getElementById("MAXPLANETSIZE").value);
 	STARTCHAOS = (parseFloat(STARTSPEED) + Math.random() * parseFloat(MAXSTARTSPEED));
 
 	// init local vars
@@ -67,7 +73,7 @@ function run() {
 		if(i > 0) {
 			if(!STARTSTATIC) {
 				start = {x:STARTCHAOS, y:0};
-				size = 1 + Math.floor(Math.random() * 5);
+				size = MINPLANETSIZE + Math.floor(Math.random() * MAXPLANETSIZE);
 				mass = (size * PLANETMASS);
 				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),-90,true);
 				x = a[0];
