@@ -5,11 +5,11 @@ const 	G = 6.674e-11,
 		hW = (WW/2),
 		hH = (HH/2);
 var 	SOLARSIZE = 20,
-		SOLARMASS = (500 * 12e+9),
-		PLANETMASS = 12e+7,
+		SOLARMASS = (500 * 12e+8),
+		PLANETMASS = 12e+3,
 		NUMBEROFPLANETS = 20, // n - 1 ( the sun ) 
-		STARTSPEED = 0.25,
-		MAXSTARTSPEED = 0.1,
+		STARTSPEED = 0.1;//25,
+		MAXSTARTSPEED = 0.01,
 		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
 		MINDISSTART = 150;
 		MAXDISSTART = 400;
@@ -48,10 +48,10 @@ function run() {
 	_objects = [];
 
 	// get vars from control form
-	SOLARSIZE = document.getElementById("SOLARSIZE").value;
-	SOLARMASS = document.getElementById("SOLARMASS").value;
-	PLANETMASS = document.getElementById("PLANETMASS").value;
-	NUMBEROFPLANETS = document.getElementById("NUMBEROFPLANETS").value;
+	SOLARSIZE = parseInt(document.getElementById("SOLARSIZE").value);
+	SOLARMASS = parseInt(document.getElementById("SOLARMASS").value);
+	PLANETMASS = parseInt(document.getElementById("PLANETMASS").value);
+	NUMBEROFPLANETS = parseInt(document.getElementById("NUMBEROFPLANETS").value);
 
 	STARTSPEED = parseFloat(document.getElementById("STARTSPEED").value);
 	MAXSTARTSPEED = parseFloat(document.getElementById("MAXSTARTSPEED").value);
@@ -92,6 +92,7 @@ function run() {
 				// set the degrees
 				let d = Math.floor(Math.random() * 360);
 				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),d,true);
+
 				// set the start location of the planet
 				x = a[0];
 				y = a[1];

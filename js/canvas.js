@@ -49,10 +49,8 @@ function render() {
 			if(!err) {
 				// loop everything
 				for(let i=0; i<_objects.length; i++) {
-					//if(i == 0)console.log(_objects[i].get().speed);
 					_objects[i].loop();
 					_objects[i].draw();
-					//if(i == 0)console.log(_objects[i].get().speed);
 				}
 				// restore
 				ctx.restore();

@@ -62,21 +62,46 @@ var Gravity = (function(){
 
 		a.x += a.speed.x;
 		a.y += a.speed.y;
+
 	}
 	//
 	var calcAll = function(objects,callback) {
 		for(let x = 0; x < objects.length; x++) {
-			for(let y = 0; y < objects.length; y++) {
-				if(haserror == false) {
-					// skip the current object
-					if(x != y) {
-						//console.log(x,y);
-						calc(objects[x],objects[y]);
+			if(objects[x].get().alive) {
+				// only loop others if this object is alive
+				for(let y = 0; y < objects.length; y++) {
+					if(haserror == false) {
+						// skip the current object
+						if(objects[y].get().alive) {
+							if(x != y) {
+								calc(objects[x],objects[y]);
+								if(x==0)checkCollision(objects[x],objects[y]);
+							}
+						}
 					}
 				}
 			}
 		}
 		callback(haserror);
+	}
+	//
+	var checkCollision = function(a,b) {
+		let v = new Vector(0,0);
+		let d = distance(a.get().x,a.get().y,b.get().x,b.get().y);
+		let s = (a.get().r + b.get().r);
+		let m = (a.get().mass + b.get().mass);
+		if(d <= (s / 2)) {
+			if(a.get().mass < b.get().mass) {
+				b.raisemass(m);
+				b.raisesize(s);
+				a.collision();
+			}
+			if(b.get().mass < a.get().mass){
+				a.raisemass(m);
+				a.raisesize(s);
+				b.collision();
+			}
+		}
 	}
 
 	return {
