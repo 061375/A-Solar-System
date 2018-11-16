@@ -7,7 +7,7 @@ const 	G = 6.674e-11,
 var 	SOLARSIZE = 20,
 		SOLARMASS = (500 * 12e+9),
 		PLANETMASS = 12e+7,
-		NUMBEROFPLANETS = 12, // n - 1 ( the sun ) 
+		NUMBEROFPLANETS = 20, // n - 1 ( the sun ) 
 		STARTSPEED = 0.25,
 		MAXSTARTSPEED = 0.03,
 		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
@@ -34,6 +34,8 @@ window.onload = function(){
 		document.getElementById("MAXDISSTART").value = MAXDISSTART;
 		document.getElementById("MINPLANETSIZE").value = MINPLANETSIZE;
 		document.getElementById("MAXPLANETSIZE").value = MAXPLANETSIZE;
+		document.getElementById("STARTSTATIC").checked = STARTSTATIC;
+
 		run(); 
 	});
 }
@@ -57,6 +59,7 @@ function run() {
 	MAXDISSTART = parseInt(document.getElementById("MAXDISSTART").value);
 	MINPLANETSIZE = parseInt(document.getElementById("MINPLANETSIZE").value);
 	MAXPLANETSIZE = parseInt(document.getElementById("MAXPLANETSIZE").value);
+	STARTSTATIC = document.getElementById("STARTSTATIC").checked;
 	STARTCHAOS = (parseFloat(STARTSPEED) + Math.random() * parseFloat(MAXSTARTSPEED));
 
 	// init local vars
@@ -71,15 +74,31 @@ function run() {
 
 		// if not the first loop 
 		if(i > 0) {
+			size = MINPLANETSIZE + Math.floor(Math.random() * MAXPLANETSIZE);
+			mass = (size * PLANETMASS);
 			if(!STARTSTATIC) {
 				start = {x:STARTCHAOS, y:0};
-				size = MINPLANETSIZE + Math.floor(Math.random() * MAXPLANETSIZE);
-				mass = (size * PLANETMASS);
 				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),-90,true);
 				x = a[0];
 				y = a[1];
 			}else{
-
+				// This sets the planets up evenly around the sun then starts tem all in the same direction
+				// set the degrees
+				let d = Math.floor(Math.random() * 360);
+				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),d,true);
+				// set the start location of the planet
+				x = a[0];
+				y = a[1];
+				// get direction of the sun
+				let sd = point_direction(a[0],a[1],hW,hH,false);
+				// point -90 degrees
+				sd -= 90;
+				if(sd < 0)sd += 360;
+				// convert to radians
+				sd = sd * Math.PI / 180;
+				// set planet in that direction at velocity of STARTCHAOS
+				start.x += (Math.cos(sd) * Math.PI / 180) * (STARTCHAOS * 100);
+    			start.y += (Math.sin(sd) * Math.PI / 180) * (STARTCHAOS * 100);
 			}
 		}else{
 			// first loop init the SUN
