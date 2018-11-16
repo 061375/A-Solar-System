@@ -90,7 +90,7 @@ var Gravity = (function(){
 		let d = distance(a.get().x,a.get().y,b.get().x,b.get().y);
 		let s = (a.get().r + b.get().r);
 		let m = (a.get().mass + b.get().mass);
-		if(d <= (s / 2)) {
+		if(d <= (s)) {
 			if(a.get().mass < b.get().mass) {
 				b.raisemass(m);
 				b.raisesize(s);
