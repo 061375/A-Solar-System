@@ -9,9 +9,9 @@ var 	SOLARSIZE = 20,
 		PLANETMASS = 12e+7,
 		NUMBEROFPLANETS = 20, // n - 1 ( the sun ) 
 		STARTSPEED = 0.25,
-		MAXSTARTSPEED = 0.03,
+		MAXSTARTSPEED = 0.1,
 		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
-		MINDISSTART = 50;
+		MINDISSTART = 150;
 		MAXDISSTART = 400;
 		MINPLANETSIZE = 1;
 		MAXPLANETSIZE = 5;
@@ -20,8 +20,7 @@ var 	SOLARSIZE = 20,
 // initialize variables
 var canvas, ctx,  _objects = [], isrunnning = true, W, H;
 
-document.getElementById("navtab").addEventListener('click', toggleMenu, false);
-document.getElementById("updateconfig").addEventListener('click', run, false);
+
 window.onload = function(){ 
 	buildCanvas(function(){
 		document.getElementById("SOLARSIZE").value = SOLARSIZE;
@@ -53,14 +52,21 @@ function run() {
 	SOLARMASS = document.getElementById("SOLARMASS").value;
 	PLANETMASS = document.getElementById("PLANETMASS").value;
 	NUMBEROFPLANETS = document.getElementById("NUMBEROFPLANETS").value;
-	STARTSPEED = document.getElementById("STARTSPEED").value;
-	MAXSTARTSPEED = document.getElementById("MAXSTARTSPEED").value;
+
+	STARTSPEED = parseFloat(document.getElementById("STARTSPEED").value);
+	MAXSTARTSPEED = parseFloat(document.getElementById("MAXSTARTSPEED").value);
+	MAXSTARTSPEED -= STARTSPEED;
+
 	MINDISSTART = parseInt(document.getElementById("MINDISSTART").value);
 	MAXDISSTART = parseInt(document.getElementById("MAXDISSTART").value);
+	MAXDISSTART -= MINDISSTART;
+
 	MINPLANETSIZE = parseInt(document.getElementById("MINPLANETSIZE").value);
 	MAXPLANETSIZE = parseInt(document.getElementById("MAXPLANETSIZE").value);
+	MAXPLANETSIZE -= MINPLANETSIZE;
+
 	STARTSTATIC = document.getElementById("STARTSTATIC").checked;
-	STARTCHAOS = (parseFloat(STARTSPEED) + Math.random() * parseFloat(MAXSTARTSPEED));
+	STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
 
 	// init local vars
 	let size = SOLARSIZE;

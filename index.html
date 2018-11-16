@@ -1,75 +1,6 @@
 <html>
 	<head>
-		<style>
-			body {
-				background-color: #000;
-				max-width: 100vw;
-    			overflow: hidden;
-    			font-family: Arial;
-			}
-			#menu-container {
-				position: absolute;
-				top: 0px;
-				right: 0px;
-				background: #2f2f2f;
-			    width: 395px;
-			    height: 100vh;
-			    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-			    padding: 5px;
-    			box-sizing: border-box;
-			}
-			#menu-container.close {
-				right: -395px;
-			}
-			#navtab {
-				position: relative;
-				background: #525252;
-			    left: -33px;
-			    width: 535px;
-			    height: 30px;
-			    border-top-left-radius: 10px;
-    			border-bottom-left-radius: 10px;
-    			box-shadow: 1px 1px 2px #000;
-			}
-			#openclose {
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-width: 14px 24.2px 14px 0;
-				border-color: transparent #ffffff transparent transparent;
-				margin: 5px 0px;
-				cursor: pointer;
-			}
-			#menu {
-				text-transform: uppercase;;
-			}
-			#menu .accordion {
-				margin-top: 10px;
-				color: #fff;
-				background-color: #656565;
-			    box-shadow: 1px 1px 2px #000;
-			    padding: 3px;
-			    cursor: pointer;
-			}
-			#menu table {
-				margin-top: 10px;
-    			width: 100%;
-			}
-			#menu td {
-				color: #fff;
-			}
-			#menu td input {
-				float: right;
-			}
-			#menu button {
-				width: 100%;
-			    margin-top: 20px;
-			    padding: 10px;
-			    font-size: 20px;
-			    text-transform: unset;
-			    border-radius: 10px;
-			}
-		</style>
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		<div id="menu-container">
@@ -161,10 +92,12 @@
 			</div>
 		</div>
 		<div id="container"></div>
-		<script src="gravity.js"></script>
-		<script src="gobject.js"></script>
-		<script src="vector.js"></script>
-		<script src="protohacks.js"></script>
-		<script src="script.js"></script>
+		<script src="js/gravity.js"></script>
+		<script src="js/gobject.js"></script>
+		<script src="js/vector.js"></script>
+		<script src="js/protohacks.js"></script>
+		<script src="js/checkerrors.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/eventhandles.js"></script>
 	</body>
 </html>
