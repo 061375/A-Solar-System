@@ -7,10 +7,13 @@ const 	G = 6.674e-11,
 var 	SOLARSIZE = 20,
 		SOLARMASS = (500 * 12e+9),
 		PLANETMASS = 12e+7,
-		NUMBEROFPLANETS = 150, // n - 1 ( the sun ) 
-		STARTSPEED = 0.1,
+		NUMBEROFPLANETS = 12, // n - 1 ( the sun ) 
+		STARTSPEED = 0.25,
 		MAXSTARTSPEED = 0.03,
 		STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
+		MINDISSTART = 50;
+		MAXDISSTART = 400;
+		STARTSTATIC = false;
 
 // initialize variables
 var canvas, ctx,  _objects = [], isrunnning = true, W, H;
@@ -25,6 +28,8 @@ window.onload = function(){
 		document.getElementById("NUMBEROFPLANETS").value = NUMBEROFPLANETS;
 		document.getElementById("STARTSPEED").value = STARTSPEED;
 		document.getElementById("MAXSTARTSPEED").value = MAXSTARTSPEED;
+		document.getElementById("MINDISSTART").value = MINDISSTART;
+		document.getElementById("MAXDISSTART").value = MAXDISSTART;
 		run(); 
 	});
 }
@@ -44,6 +49,8 @@ function run() {
 	NUMBEROFPLANETS = document.getElementById("NUMBEROFPLANETS").value;
 	STARTSPEED = document.getElementById("STARTSPEED").value;
 	MAXSTARTSPEED = document.getElementById("MAXSTARTSPEED").value;
+	MINDISSTART = parseInt(document.getElementById("MINDISSTART").value);
+	MAXDISSTART = parseInt(document.getElementById("MAXDISSTART").value);
 	STARTCHAOS = (parseFloat(STARTSPEED) + Math.random() * parseFloat(MAXSTARTSPEED));
 
 	// init local vars
@@ -58,29 +65,21 @@ function run() {
 
 		// if not the first loop 
 		if(i > 0) {
-			
-			start = {x:STARTCHAOS, y:0};
-			/*
-			Plan to start in random positions then give each planet a kick in the right direction
+			if(!STARTSTATIC) {
+				start = {x:STARTCHAOS, y:0};
+				size = 1 + Math.floor(Math.random() * 5);
+				mass = (size * PLANETMASS);
+				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),-90,true);
+				x = a[0];
+				y = a[1];
+			}else{
 
-			let d = point_direction(WW,HH,x,y);
-			let a = trig(WW,HH,distance(WW,HH,x,y),d);
-				d += cspeed;
-			let b = trig(WW,HH,distance(WW,HH,x,y),d);
-			start = Vector.add(a,b);
-			//console.log(start);
-			*/
-
-			size = 1 + Math.floor(Math.random() * 5);
-			mass = (size * PLANETMASS);
-
-			x = hW;//Math.random() * WW;
-			y = Math.random() * (HH / 4);
+			}
 		}else{
 			// first loop init the SUN
 			x = hW;
 			y = hH;
-			// plaing with multipl planets ( @TODO )
+			// plaing with multipl suns ( @TODO )
 			/*
 			if(i==0) {
 				x = hW + 500;
