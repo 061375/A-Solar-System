@@ -31,7 +31,7 @@ class gObject {
 
 			if(RENDERLINES) {
 				ctx.beginPath();
-				ctx.setLineDash([1, 15]);
+				ctx.setLineDash([1, Math.floor(distance(this.vars.x,this.vars.y,_objects[0].get().x,_objects[0].get().y) / 10)]);
 				ctx.strokeStyle = '#ffffff';
 				ctx.moveTo(_objects[0].get().x,_objects[0].get().y);
 				ctx.lineTo(this.vars.x,this.vars.y);
