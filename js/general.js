@@ -12,14 +12,15 @@ function toggleMenu() {
  * 
  * */
 function toggleAccordion(e) {
-    //console.log(e.target.nextSibling.nextSibling);
-    
     if(e.target.nextSibling.nextSibling.hasClass("close")) {
         e.target.nextSibling.nextSibling.removeClass("close");
     }else{
         e.target.nextSibling.nextSibling.addClass("close");
     }
     
+}
+function toggleDrawLines() {
+    RENDERLINES = document.getElementById("RENDERLINES").checked;
 }
 /**
  * 

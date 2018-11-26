@@ -15,6 +15,8 @@ document.getElementById("BOOLCOLLISION").addEventListener('change', toggleCollis
 
 document.getElementById("BOOLACCRETION").addEventListener('change', toggleAccretion, false);
 
+document.getElementById("RENDERLINES").addEventListener('change', toggleDrawLines, false);
+
 classEvent("accordion","click",toggleAccordion);
 
 
