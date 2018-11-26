@@ -37,6 +37,15 @@ class gObject {
 	get() {
 		return this.vars;
 	}
+	/**
+	 * @method set
+	 * @param {String}
+	 * @param {Mixed}
+	 * @return {Void}
+	 * */
+	set(key,value) {
+		this.vars[key] = value;
+	}
 	/** 
 	 * 
 	 */
@@ -48,6 +57,16 @@ class gObject {
 	 * */
 	raisemass(m) {
 		this.vars.mass = m;
+	}
+	/** 
+	 * 
+	 * */
+	getspeed() {
+		if(this.vars.alive){
+			return distance(this.vars.x,this.vars.y,this.vars.px,this.vars.py);
+		}else{
+			return 0;
+		}
 	}
 	/** 
 	 * 

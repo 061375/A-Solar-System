@@ -64,6 +64,9 @@ var Gravity = (function(){
 		// Y speed
 		a.speed.y += av.y;
 
+		a.px = a.x;
+		a.py = a.y;
+
 		a.x += a.speed.x;
 		a.y += a.speed.y;
 
