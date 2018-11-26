@@ -14,3 +14,15 @@ document.getElementById("MAXDISSTART").addEventListener('keyup', checkPlanetDis,
 document.getElementById("BOOLCOLLISION").addEventListener('change', toggleCollision, false);
 
 document.getElementById("BOOLACCRETION").addEventListener('change', toggleAccretion, false);
+
+classEvent("accordion","click",toggleAccordion);
+
+
+
+
+function classEvent(_class,_event,_function) {
+	let elems = document.getElementsByClassName(_class);
+	for(let i=0; i<elems.length; i++) {
+		elems[i].addEventListener(_event, _function, false);
+	}	
+}

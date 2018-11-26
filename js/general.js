@@ -8,6 +8,22 @@ function toggleMenu() {
 		document.getElementById("menu-container").addClass("close");
 	}
 }
+/** 
+ * 
+ * */
+function toggleAccordion(e) {
+    //console.log(e.target.nextSibling.nextSibling);
+    
+    if(e.target.nextSibling.nextSibling.hasClass("close")) {
+        e.target.nextSibling.nextSibling.removeClass("close");
+    }else{
+        e.target.nextSibling.nextSibling.addClass("close");
+    }
+    
+}
+/**
+ * 
+ * */
 function toggleCollision() {
     BOOLCOLLISION = document.getElementById("BOOLCOLLISION").checked;
     Gravity.toggleCollision(BOOLCOLLISION);

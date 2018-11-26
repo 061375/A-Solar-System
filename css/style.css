@@ -71,3 +71,11 @@ input.haserror {
 	background-color: red;
 	color: yellow;
 }
+div.section {
+	transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+	height: inherit;	
+}
+div.section.close {
+	height: 0px;
+	overflow: hidden;
+}
