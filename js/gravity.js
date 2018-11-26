@@ -64,9 +64,11 @@ var Gravity = (function(){
 		// Y speed
 		a.speed.y += av.y;
 
+		// set the previous position for speed calculation
 		a.px = a.x;
 		a.py = a.y;
 
+		// update a [x,y] position
 		a.x += a.speed.x;
 		a.y += a.speed.y;
 
