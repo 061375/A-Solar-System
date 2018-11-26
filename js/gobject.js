@@ -20,6 +20,9 @@ class gObject {
 	 * */
 	draw() {
 		if(this.vars.alive) {
+			// increment current number of planets
+			CURRENTNOPLANETS++;
+			
 			ctx.fillStyle=this.vars.color;
 			ctx.beginPath();
 			ctx.arc(this.vars.x,this.vars.y,this.vars.r,0,Math.PI*2,true);

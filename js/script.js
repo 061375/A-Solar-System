@@ -18,7 +18,7 @@ var 	SOLARSIZE = 20,
 		STARTSTATIC = false;
 		BOOLCOLLISION = false;
 		BOOLACCRETION = false;
-
+		CURRENTNOPLANETS = 0;
 // initialize variables
 var canvas, ctx,  _objects = [], isrunnning = true, W, H;
 
@@ -73,7 +73,7 @@ function run() {
 	STARTCHAOS = (STARTSPEED + Math.random() * MAXSTARTSPEED);
 
 	BOOLCOLLISION = document.getElementById("BOOLCOLLISION").checked;
-	
+
 	BOOLACCRETION = document.getElementById("BOOLACCRETION").checked;
 
 	// init local vars

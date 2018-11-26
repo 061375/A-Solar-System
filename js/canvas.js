@@ -37,6 +37,8 @@ function resizeHandler() {
  * */
 function render() {
 
+	CURRENTNOPLANETS = 0;
+	
 	requestAnimationFrame(render);
 
 	// if true then render 
