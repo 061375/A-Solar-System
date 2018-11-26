@@ -19,6 +19,7 @@ var 	SOLARSIZE = 20,
 		BOOLCOLLISION = false;
 		BOOLACCRETION = false;
 		CURRENTNOPLANETS = 0;
+		RENDERLINES = false;
 // initialize variables
 var canvas, ctx,  _objects = [], isrunnning = true, W, H;
 

@@ -28,6 +28,15 @@ class gObject {
 			ctx.arc(this.vars.x,this.vars.y,this.vars.r,0,Math.PI*2,true);
 			ctx.closePath();
 			ctx.fill();	
+
+			if(RENDERLINES) {
+				ctx.beginPath();
+				ctx.setLineDash([1, 15]);
+				ctx.strokeStyle = '#ffffff';
+				ctx.moveTo(_objects[0].get().x,_objects[0].get().y);
+				ctx.lineTo(this.vars.x,this.vars.y);
+				ctx.stroke();
+			}
 		}
 	}
 	/** 
