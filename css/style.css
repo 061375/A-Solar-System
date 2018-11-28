@@ -72,6 +72,8 @@ body {
 }
 #menu td {
 	color: #fff;
+	text-transform: capitalize;
+    font-size: 10px;
 }
 #menu td input {
 	float: right;
