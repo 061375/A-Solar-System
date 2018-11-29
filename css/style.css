@@ -4,6 +4,9 @@ body {
 	overflow: hidden;
 	font-family: Arial;
 }
+canvas {
+	cursor: none;
+}
 #menu-container {
 	position: absolute;
 	top: 0px;
