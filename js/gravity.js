@@ -6,10 +6,15 @@ var Gravity = (function(){
 
 	var boolaccretion = false;
 
+	/** 
+	 * @param {Object}
+	 * @param {Object}
+	 * */
 	var calc = function(a,b) {
 		
 		a = a.get();
 		b = b.get();
+		
 		b.v = new Vector(b.x,b.y);
 
 		if(undefined === a.x) {
@@ -73,7 +78,10 @@ var Gravity = (function(){
 		a.y += a.speed.y;
 
 	}
-	//
+	/** 
+	 * @param {Array}
+	 * @param {Function}
+	 * */
 	var calcAll = function(objects,callback) {
 		for(let x = 0; x < objects.length; x++) {
 			if(objects[x].get().alive) {
@@ -94,7 +102,10 @@ var Gravity = (function(){
 		}
 		callback(haserror);
 	}
-	//
+	/** 
+	 * @param {Object}
+	 * @param {Object}
+	 * */
 	var checkCollision = function(a,b) {
 		let v = new Vector(0,0);
 		let d = distance(a.get().x,a.get().y,b.get().x,b.get().y);
@@ -117,11 +128,18 @@ var Gravity = (function(){
 			}
 		}
 	}
-	//
+
+	// ---- SETTERS
+
+	/** 
+	 * @param {Boolean}
+	 * */
 	var toggleCollision = function(b) {
 		boolcollision = b;
 	}
-	//
+	/** 
+	 * @param {Boolean}
+	 * */
 	var toggleAccretion = function(b) {
 		boolaccretion = b;
 	}

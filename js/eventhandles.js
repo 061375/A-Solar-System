@@ -17,11 +17,14 @@ document.getElementById("BOOLACCRETION").addEventListener('change', toggleAccret
 
 document.getElementById("RENDERLINES").addEventListener('change', toggleDrawLines, false);
 
+document.getElementById("SOLARMASS").addEventListener('keyup', toggleSolarMass, false);
+document.getElementById("PLANETMASS").addEventListener('keyup', togglePlanetMass, false);
+
+
+
+
+
 classEvent("accordion","click",toggleAccordion);
-
-
-
-
 function classEvent(_class,_event,_function) {
 	let elems = document.getElementsByClassName(_class);
 	for(let i=0; i<elems.length; i++) {

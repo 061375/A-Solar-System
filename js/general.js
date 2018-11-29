@@ -33,6 +33,17 @@ function toggleAccretion() {
     BOOLACCRETION = document.getElementById("BOOLACCRETION").checked;
     Gravity.toggleAccretion(BOOLACCRETION);
 }
+
+function toggleSolarMass() {
+    SOLARMASS = parseInt(document.getElementById("SOLARMASS").value);  
+    _objects[0].set('mass',SOLARMASS);
+}
+function togglePlanetMass() {
+    PLANETMASS = parseInt(document.getElementById("PLANETMASS").value);  
+    for(let i=1; i<_objects.length; i++) {
+        _objects[i].set('mass',_objects[i].get().r + PLANETMASS);   
+    }
+}
 /** 
  * 
  * @function distance
