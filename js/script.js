@@ -92,7 +92,7 @@ function run() {
 			size = MINPLANETSIZE + Math.floor(Math.random() * MAXPLANETSIZE);
 			mass = (size * PLANETMASS);
 			if(!STARTSTATIC) {
-				start = {x:STARTCHAOS, y:0};
+				start = {x:(STARTSPEED + Math.random() * MAXSTARTSPEED), y:0};
 				let a = trig(hW,hH,(MINDISSTART + Math.random() * MAXDISSTART),-90,true);
 				x = a[0];
 				y = a[1];
@@ -113,8 +113,8 @@ function run() {
 				// convert to radians
 				sd = sd * Math.PI / 180;
 				// set planet in that direction at velocity of STARTCHAOS
-				start.x += (Math.cos(sd) * Math.PI / 180) * (STARTCHAOS * 100);
-    			start.y += (Math.sin(sd) * Math.PI / 180) * (STARTCHAOS * 100);
+				start.x += (Math.cos(sd) * Math.PI / 180) * ((STARTSPEED + Math.random() * MAXSTARTSPEED) * 100);
+    			start.y += (Math.sin(sd) * Math.PI / 180) * ((STARTSPEED + Math.random() * MAXSTARTSPEED) * 100);
 			}
 		}else{
 			// first loop init the SUN
