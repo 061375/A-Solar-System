@@ -25,7 +25,9 @@ var canvas, ctx,  _objects = [], isrunnning = true, W, H;
 
 
 window.onload = function(){ 
+	// build a canvas
 	buildCanvas(function(){
+		// set the values based on init
 		document.getElementById("SOLARSIZE").value = SOLARSIZE;
 		document.getElementById("SOLARMASS").value = SOLARMASS;
 		document.getElementById("PLANETMASS").value = PLANETMASS;
@@ -40,6 +42,7 @@ window.onload = function(){
 		document.getElementById("BOOLCOLLISION").checked = BOOLCOLLISION;
 		document.getElementById("BOOLACCRETION").checked = BOOLACCRETION;
 
+		// run everything
 		run(); 
 	});
 }

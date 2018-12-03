@@ -1,21 +1,31 @@
+/** 
+ * 
+ * 
+ * */
 var Gravity = (function(){
 
+	// @var {Boolean}
 	var haserror = false;
-
+	// @var {Boolean}
 	var boolcollision = false;
-
+	// @var {Boolean}
 	var boolaccretion = false;
 
 	/** 
 	 * @param {Object}
 	 * @param {Object}
+	 * @returns {Void}
 	 * */
 	var calc = function(a,b) {
-		
+
+		// get the object variables
 		a = a.get();
 		b = b.get();
-		
+
+		// create a new vector object
 		b.v = new Vector(b.x,b.y);
+
+		// user error check
 
 		if(undefined === a.x) {
 			console.log("ERROR:: Object[a] requires a.x coordinate to be initialized");
@@ -46,6 +56,7 @@ var Gravity = (function(){
 		let v = new Vector(0,0);
 		let av = new Vector(0,0);
 		let bv = new Vector(0,0);
+		
 		b.v.x -= a.x;
 		b.v.y -= a.y;
 
