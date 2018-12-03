@@ -1,5 +1,6 @@
 /** 
- * 
+ * opens and closes the main menu
+ * @returns {Void}
  * */
 function toggleMenu() {
 	if(document.getElementById("menu-container").hasClass("close")) {
@@ -9,7 +10,9 @@ function toggleMenu() {
 	}
 }
 /** 
- * 
+ * opens and closes accordion section
+ * @param {Object} event
+ * @returns {Void}
  * */
 function toggleAccordion(e) {
     if(e.target.nextSibling.nextSibling.hasClass("close")) {
@@ -19,25 +22,41 @@ function toggleAccordion(e) {
     }
     
 }
+/** 
+ * toggles to draw lines to the sun from each planet
+ * @returns {Void}
+ * */
 function toggleDrawLines() {
     RENDERLINES = document.getElementById("RENDERLINES").checked;
 }
 /**
- * 
+ * toggles if collisions can occur
+ * @returns {Void}
  * */
 function toggleCollision() {
     BOOLCOLLISION = document.getElementById("BOOLCOLLISION").checked;
     Gravity.toggleCollision(BOOLCOLLISION);
 }
+/**
+ * toggles if gobjects will combine on collision
+ * @returns {Void}
+ * */
 function toggleAccretion() {
     BOOLACCRETION = document.getElementById("BOOLACCRETION").checked;
     Gravity.toggleAccretion(BOOLACCRETION);
 }
-
+/**
+ * updates the current solar mass in real-time
+ * @returns {Void}
+ * */
 function toggleSolarMass() {
     SOLARMASS = parseInt(document.getElementById("SOLARMASS").value);  
     _objects[0].set('mass',SOLARMASS);
 }
+/**
+ * updates the current planetary masses in real-time
+ * @returns {Void}
+ * */
 function togglePlanetMass() {
     PLANETMASS = parseInt(document.getElementById("PLANETMASS").value);  
     for(let i=1; i<_objects.length; i++) {

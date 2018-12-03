@@ -1,3 +1,5 @@
+// This code involves the event handlers
+
 document.getElementById("navtab").addEventListener('click', toggleMenu, false);
 
 document.getElementById("updateconfig").addEventListener('click', run, false);
@@ -25,8 +27,16 @@ document.getElementById("PLANETMASS").addEventListener('keyup', togglePlanetMass
 
 
 classEvent("accordion","click",toggleAccordion);
+/** 
+ * allows an event handler to be attached to all nodes of a class (like in jQuery)
+ * @param {String}
+ * @param {Object} event
+ * @param {Function} the fucntion to tie to the event
+ * */
 function classEvent(_class,_event,_function) {
+	// get the list of nodes for this class
 	let elems = document.getElementsByClassName(_class);
+	// loop the nodes and attach the event
 	for(let i=0; i<elems.length; i++) {
 		elems[i].addEventListener(_event, _function, false);
 	}	
