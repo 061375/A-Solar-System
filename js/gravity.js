@@ -56,7 +56,7 @@ var Gravity = (function(){
 		let v = new Vector(0,0);
 		let av = new Vector(0,0);
 		let bv = new Vector(0,0);
-		
+
 		b.v.x -= a.x;
 		b.v.y -= a.y;
 

@@ -1,3 +1,7 @@
+/** 
+ * 
+ * 
+ * */
 class gObject {
 	/** 
 	 * @param {Object}
@@ -8,7 +12,6 @@ class gObject {
 		this.vars.alive = true;
 	}
 	/** 
-	 * no need for a loop here but its called automatically
 	 * @method loop
 	 * */
 	loop() {
@@ -30,6 +33,7 @@ class gObject {
 			ctx.fill();	
 
 			if(RENDERLINES) {
+				// draw lines from planet to the sun
 				ctx.beginPath();
 				ctx.setLineDash([1, Math.floor(distance(this.vars.x,this.vars.y,_objects[0].get().x,_objects[0].get().y) / 10)]);
 				ctx.strokeStyle = '#ffffff';
@@ -56,19 +60,19 @@ class gObject {
 		this.vars[key] = value;
 	}
 	/** 
-	 * 
+	 * set that this object has collided
 	 */
 	collision() {
 		this.vars.collision = true;
 	}
 	/** 
-	 * 
+	 * @param {Number}
 	 * */
 	raisemass(m) {
 		this.vars.mass = m;
 	}
 	/** 
-	 * 
+	 * get the current speed of this object
 	 * */
 	getspeed() {
 		if(this.vars.alive){
